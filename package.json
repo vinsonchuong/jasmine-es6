@@ -1,0 +1,24 @@
+{
+  "name": "jasmine-es6",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/vinsonchuong/jasmine-es6",
+  "bugs": "https://github.com/vinsonchuong/jasmine-es6/issues",
+  "license": "",
+  "author": "Vinson Chuong <vinsonchuong@gmail.com>",
+  "files": ["index.js", "README.md", "LICENSE"],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vinsonchuong/jasmine-es6"
+  },
+  "devDependencies": {
+    "jasmine": "^2.2.0"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "test": "jasmine"
+  }
+}
