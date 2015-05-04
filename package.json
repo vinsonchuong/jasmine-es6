@@ -1,24 +1,32 @@
 {
   "name": "jasmine-es6",
   "version": "0.0.1",
-  "description": "",
+  "description": "Helpers and overrides that augment Jasmine for use in an ES6+ environment",
   "keywords": [],
   "homepage": "https://github.com/vinsonchuong/jasmine-es6",
   "bugs": "https://github.com/vinsonchuong/jasmine-es6/issues",
   "license": "",
   "author": "Vinson Chuong <vinsonchuong@gmail.com>",
-  "files": ["index.js", "README.md", "LICENSE"],
-  "main": "index.js",
+  "files": ["dist", "README.md", "LICENSE"],
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/vinsonchuong/jasmine-es6"
   },
   "devDependencies": {
-    "jasmine": "^2.2.0"
+    "babel": "^5.2.6",
+    "jasmine": "^2.3.1",
+    "fs-promise": "^0.3.1"
+  },
+  "peerDependencies": {
+    "jasmine": "^2.3.1"
   },
   "dependencies": {
+    "babel-runtime": "^5.2.6",
+    "es6-promise": "^2.1.1"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "babel-node --stage 1 --optional runtime -e 'new (require(\"jasmine\"))().execute([\"spec/spec_helper.js\", \"spec/**/*_spec.js\"])'",
+    "prepublish": "babel --stage 1 --optional runtime src --out-dir dist"
   }
 }
