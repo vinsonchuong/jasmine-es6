@@ -30,7 +30,7 @@
     "jasmine": "^2.3.1"
   },
   "scripts": {
-    "test": "node src/bin/jasmine-es6.js",
+    "test": "src/bin/jasmine-es6.js",
     "prepublish": "babel --stage 1 --optional runtime src --out-dir dist"
   }
 }

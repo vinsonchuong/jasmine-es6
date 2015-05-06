@@ -6,7 +6,7 @@ async function cli(fixture, env = null) {
     path.resolve('src/bin/jasmine-es6.js'),
     {
       cwd: path.resolve(`spec/fixtures/${fixture}`),
-      env
+      env: Object.assign({}, process.env, env)
     }
   );
   return child.stdout;
