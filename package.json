@@ -18,10 +18,9 @@
   },
   "devDependencies": {
     "child-process-promise": "^1.0.2",
-    "fs-promise": "^0.3.1"
-  },
-  "peerDependencies": {
-    "jasmine": "^2.3.1"
+    "fs-promise": "^0.3.1",
+    "eslint": "^0.20.0",
+    "babel-eslint": "^3.0.1"
   },
   "dependencies": {
     "babel": "^5.2.6",
@@ -30,7 +29,7 @@
     "jasmine": "^2.3.1"
   },
   "scripts": {
-    "test": "src/bin/jasmine-es6.js",
-    "prepublish": "babel --stage 1 --optional runtime src --out-dir dist"
+    "test": "eslint src spec && src/bin/jasmine-es6.js",
+    "prepublish": "babel src --out-dir dist"
   }
 }

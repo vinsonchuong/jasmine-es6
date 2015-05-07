@@ -3,13 +3,15 @@ import install from '../../src/overrides/async';
 install();
 
 const implementation = {
-  fetch(url) { return new Promise((resolve, reject) => null) },
+  fetch() {
+    return new Promise(() => null);
+  },
   async doStuff() {
     this.showSpinner = true;
     await this.fetch('https://google.com');
     this.showSpinner = false;
   }
-}
+};
 
 describe('Promise', function() {
   it('works', async function() {

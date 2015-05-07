@@ -24,7 +24,9 @@ function wrap(jasmineFn) {
 
 let installed = false;
 export default function install(env = global) {
-  if (installed) return;
+  if (installed) {
+    return;
+  }
   installed = true;
   for (const fnName of fnNames) {
     env[fnName] = wrap(env[fnName]);

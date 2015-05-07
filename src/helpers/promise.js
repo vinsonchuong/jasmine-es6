@@ -7,7 +7,7 @@ export default class extends ES6Promise {
   constructor() {
     let resolve, reject, finish;
     super((...args) => [resolve, reject] = args);
-    let finished = new Promise(resolve => finish = resolve);
+    let finished = new Promise((...args) => [finish] = args);
     privates.set(this, {resolve, reject, finish, finished, count: 0});
   }
 
@@ -26,8 +26,10 @@ export default class extends ES6Promise {
   release() {
     let {count, finish} = privates.get(this);
     count--;
-    privates.assign(this, {count})
-    if (count === 0) finish();
+    privates.assign(this, {count});
+    if (count === 0) {
+      finish();
+    }
   }
 
   then(onFulfilled, onRejected) {
