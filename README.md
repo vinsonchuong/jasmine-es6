@@ -33,7 +33,7 @@ and passed to Jasmine's `done.fail` callback.
 
 ```js
 import fs from 'fs-promise';
-import install from 'jasmine-es6/overrides/async';
+import install from 'jasmine-es6/dist/overrides/async';
 install();
 
 describe('Async', function() {
@@ -61,8 +61,8 @@ import {catchError, Promise} from 'jasmine-es6';
 `undefined` if no error is thrown.
 
 ```js
-import catchError from 'jasmine-es6/helpers/catch_error';
-import install from 'jasmine-es6/overrides/async';
+import catchError from 'jasmine-es6/dist/helpers/catch_error';
+import install from 'jasmine-es6/dist/overrides/async';
 install();
 
 describe('Async', function() {
@@ -80,8 +80,8 @@ promise. `resolve` and `reject` also return a promise that is resolved when all
 listeners are finished executing.
 
 ```js
-import TestPromise from 'jasmine-es6/helpers/promise';
-import install from 'jasmine-es6/overrides/async';
+import TestPromise from 'jasmine-es6/dist/helpers/promise';
+import install from 'jasmine-es6/dist/overrides/async';
 install();
 
 const implementation = {
