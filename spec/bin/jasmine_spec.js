@@ -3,7 +3,7 @@ import {exec} from 'child-process-promise';
 
 async function cli(fixture, env = null) {
   const child = await exec(
-    path.resolve('src/bin/jasmine-es6.js'),
+    path.resolve('src/bin/jasmine.js'),
     {
       cwd: path.resolve(`spec/fixtures/${fixture}`),
       env: Object.assign({}, process.env, env)

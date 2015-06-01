@@ -10,7 +10,7 @@
   "files": ["dist", "README.md", "LICENSE"],
   "main": "dist/index.js",
   "bin": {
-    "jasmine-es6": "dist/bin/jasmine-es6.js"
+    "jasmine": "dist/bin/jasmine.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "jasmine": "^2.3.1"
   },
   "scripts": {
-    "test": "eslint && src/bin/jasmine-es6.js",
+    "test": "eslint && src/bin/jasmine.js",
     "prepublish": "babel src --out-dir dist"
   }
 }
