@@ -17,14 +17,14 @@
     "url": "https://github.com/vinsonchuong/jasmine-es6"
   },
   "devDependencies": {
-    "child-process-promise": "^1.0.2",
+    "child-process-promise": "^1.1.0",
     "fs-promise": "^0.3.1",
-    "eslint-defaults": "^0.0.1"
+    "eslint-defaults": "^0.0.2"
   },
   "dependencies": {
-    "babel": "^5.4.7",
-    "babel-runtime": "^5.4.7",
-    "es6-promise": "^2.1.1",
+    "babel": "^5.5.3",
+    "babel-runtime": "^5.5.3",
+    "es6-promise": "^2.2.0",
     "jasmine": "^2.3.1"
   },
   "scripts": {
