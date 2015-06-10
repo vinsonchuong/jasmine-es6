@@ -1,6 +1,4 @@
-import catchError from '../../src/helpers/catch_error';
-import install from '../../src/overrides/async';
-install();
+import catchError from 'jasmine-es6/helpers/catch_error';
 
 describe('catchError', function() {
   it('returns the error message for a failed async function', async function() {

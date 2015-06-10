@@ -1,8 +1,8 @@
-import installAsync from './overrides/async';
+import installAsync from 'jasmine-es6/overrides/async';
 
 export default function install(env = global) {
   installAsync(env);
 }
 
-export {default as catchError} from './helpers/catch_error';
-export {default as Promise} from './helpers/promise';
+export {default as catchError} from 'jasmine-es6/helpers/catch_error';
+export {default as Promise} from 'jasmine-es6/helpers/promise';

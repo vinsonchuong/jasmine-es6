@@ -1,5 +1,5 @@
 import path from 'path';
-import {exec} from 'child-process-promise';
+import {exec} from 'node-promise-es6/child-process';
 
 async function cli(fixture, env = null) {
   try {

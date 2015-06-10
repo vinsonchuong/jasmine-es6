@@ -1,5 +1,5 @@
 import {Promise as ES6Promise} from 'es6-promise';
-import Privates from '../lib/privates';
+import Privates from 'jasmine-es6/lib/privates';
 
 const privates = new Privates();
 

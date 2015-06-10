@@ -7,19 +7,18 @@
   "bugs": "https://github.com/vinsonchuong/jasmine-es6/issues",
   "license": "MIT",
   "author": "Vinson Chuong <vinsonchuong@gmail.com>",
-  "files": ["dist", "README.md", "LICENSE"],
-  "main": "dist/index.js",
+  "files": ["src", "README.md", "LICENSE"],
+  "main": "src/index.js",
   "bin": {
-    "jasmine": "dist/bin/jasmine.js"
+    "jasmine": "src/bin/jasmine.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/vinsonchuong/jasmine-es6"
   },
-  "devDependencies": {
-    "child-process-promise": "^1.1.0",
-    "fs-promise": "^0.3.1",
-    "eslint-defaults": "^0.0.2"
+  "scripts": {
+    "prepublish": "dist-es6",
+    "test": "eslint && jasmine"
   },
   "dependencies": {
     "babel": "^5.5.4",
@@ -27,8 +26,9 @@
     "es6-promise": "^2.2.0",
     "jasmine": "^2.3.1"
   },
-  "scripts": {
-    "test": "eslint && src/bin/jasmine.js",
-    "prepublish": "babel src --out-dir dist"
+  "devDependencies": {
+    "dist-es6": "^0.0.5",
+    "eslint-defaults": "^0.0.2",
+    "node-promise-es6": "^0.0.1"
   }
 }

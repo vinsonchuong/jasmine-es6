@@ -1,6 +1,4 @@
-import TestPromise from '../../src/helpers/promise';
-import install from '../../src/overrides/async';
-install();
+import TestPromise from 'jasmine-es6/helpers/promise';
 
 const implementation = {
   fetch() {
