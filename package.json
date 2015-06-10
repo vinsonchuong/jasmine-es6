@@ -27,7 +27,7 @@
     "jasmine": "^2.3.1"
   },
   "devDependencies": {
-    "dist-es6": "^0.0.5",
+    "dist-es6": "^0.0.6",
     "eslint-defaults": "^0.0.2",
     "node-promise-es6": "^0.0.1"
   }
