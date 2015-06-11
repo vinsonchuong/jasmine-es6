@@ -1,9 +1,6 @@
 var fs = require('fs');
 
-require('babel/register')({
-  stage: 0,
-  optional: ['runtime']
-});
+require('babel/register')({stage: 0});
 
 fs.exists('spec/support/jasmine.json', function(configExists) {
   if (!configExists) {
