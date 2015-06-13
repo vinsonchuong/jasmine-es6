@@ -1,3 +1,5 @@
+import parseArgs from 'jasmine-es6/lib/parse-args';
+
 const fnNames = [
   'beforeAll', 'afterAll',
   'beforeEach', 'afterEach',
@@ -6,7 +8,15 @@ const fnNames = [
 
 function wrap(jasmineFn) {
   return function(...args) {
-    let callback = args[args.length - 1];
+    let {title, callback, timeout} = parseArgs(
+      args,
+      {title: String, callback: Function, timeout: Number},
+      ['title', 'callback'],
+      ['title', 'callback', 'timeout'],
+      ['callback'],
+      ['callback', 'timeout']
+    );
+
     if (callback.toString().includes('regeneratorRuntime.async')) {
       const oldCallback = callback;
       callback = async function(done) {
@@ -18,7 +28,8 @@ function wrap(jasmineFn) {
         }
       };
     }
-    return jasmineFn(...args.slice(0, -1), callback);
+
+    return jasmineFn(...[title, callback, timeout].filter(Boolean));
   };
 }
 

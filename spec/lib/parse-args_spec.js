@@ -1,6 +1,6 @@
 import parseArgs from 'jasmine-es6/lib/parse-args';
 
-fdescribe('parseArgs', function() {
+describe('parseArgs', function() {
   it('returns an object containing the parsed arguments', function() {
     expect(
       parseArgs(

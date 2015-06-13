@@ -2,18 +2,14 @@ import path from 'path';
 import {exec} from 'node-promise-es6/child-process';
 
 async function cli(fixture, env = null) {
-  try {
-    const child = await exec(
-      'jasmine',
-      {
-        cwd: path.resolve(`fixtures/${fixture}`),
-        env: Object.assign({}, process.env, env)
-      }
-    );
-    return child.stdout;
-  } catch (e) {
-    return e.stdout;
-  }
+  const child = await exec(
+    'jasmine',
+    {
+      cwd: path.resolve(`fixtures/${fixture}`),
+      env: Object.assign({}, process.env, env)
+    }
+  );
+  return child.stdout;
 }
 
 describe('jasmine-es6', function() {
@@ -35,4 +31,11 @@ describe('jasmine-es6', function() {
       }
     )).toContain('No specs found');
   });
+
+  it('installs the async override by default', async function() {
+    const output = await cli('async_override');
+    expect(output).toContain('2 specs, 0 failures');
+    const [, duration] = output.match(/Finished in ([\d.]+) seconds/);
+    expect(Number(duration)).toBeGreaterThan(5);
+  }, 10000);
 });

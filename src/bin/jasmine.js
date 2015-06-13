@@ -8,5 +8,6 @@ fs.exists('spec/support/jasmine.json', function(configExists) {
       process.env.JASMINE_CONFIG_PATH ||
       require.resolve('jasmine-es6/config/jasmine.json');
   }
+
   require('jasmine/bin/jasmine');
 });
