@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var fs = require('fs');
 
 require('babel/register')({stage: 0});
