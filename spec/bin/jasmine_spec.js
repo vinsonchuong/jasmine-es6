@@ -5,7 +5,7 @@ async function cli(fixture, env = null) {
   const child = await exec(
     'jasmine',
     {
-      cwd: path.resolve(`fixtures/${fixture}`),
+      cwd: path.resolve(__dirname, `../../fixtures/${fixture}`),
       env: Object.assign({}, process.env, env)
     }
   );
