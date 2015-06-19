@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "dist-es6": "^0.0.13",
-    "eslint-defaults": "^0.0.6",
+    "eslint-defaults": "^0.0.7",
     "node-promise-es6": "^0.0.3"
   }
 }
