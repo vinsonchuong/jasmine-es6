@@ -2,12 +2,19 @@
   "name": "jasmine-es6",
   "version": "0.0.13",
   "description": "Helpers and overrides that augment Jasmine for use in an ES6+ environment",
-  "keywords": ["jasmine", "es6"],
+  "keywords": [
+    "jasmine",
+    "es6"
+  ],
   "homepage": "https://github.com/vinsonchuong/jasmine-es6",
   "bugs": "https://github.com/vinsonchuong/jasmine-es6/issues",
   "license": "MIT",
   "author": "Vinson Chuong <vinsonchuong@gmail.com>",
-  "files": ["src", "README.md", "LICENSE"],
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
   "main": "src/index.js",
   "bin": {
     "jasmine": "src/bin/jasmine.js"
