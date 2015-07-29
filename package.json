@@ -28,7 +28,7 @@
     "test": "eslint && jasmine"
   },
   "dependencies": {
-    "babel": "^5.8.12",
+    "babel": "^5.8.19",
     "es6-promise": "^2.3.0",
     "jasmine": "^2.3.1"
   },
