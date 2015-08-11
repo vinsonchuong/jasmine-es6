@@ -1,6 +1,6 @@
 {
   "name": "jasmine-es6",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Helpers and overrides that augment Jasmine for use in an ES6+ environment",
   "keywords": [
     "jasmine",
@@ -28,13 +28,13 @@
     "test": "eslint && jasmine"
   },
   "dependencies": {
-    "babel": "^5.8.19",
-    "es6-promise": "^2.3.0",
-    "jasmine": "^2.3.1"
+    "babel": "^5.8.21",
+    "es6-promise": "^3.0.2",
+    "jasmine": "^2.3.2"
   },
   "devDependencies": {
-    "dist-es6": "^0.0.16",
+    "dist-es6": "^0.0.17",
     "eslint-defaults": "^0.0.10",
-    "node-promise-es6": "^0.0.4"
+    "node-promise-es6": "^0.0.5"
   }
 }
