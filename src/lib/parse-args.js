@@ -1,17 +1,22 @@
 function type(value) {
-  return (
-    typeof value === 'boolean' ? Boolean :
-    typeof value === 'number' ? Number :
-    typeof value === 'string' ? String :
-    typeof value === 'function' ? Function :
-    Array.isArray(value) ? Array :
-    Object
-  );
+  if (typeof value === 'boolean') {
+    return Boolean;
+  } else if (typeof value === 'number') {
+    return Number;
+  } else if (typeof value === 'string') {
+    return String;
+  } else if (typeof value === 'function') {
+    return Function;
+  } else if (Array.isArray(value)) {
+    return Array;
+  }
+
+  return Object;
 }
 
 function matchSignature(args, variables, signature) {
   return signature.length === args.length &&
-    signature.every((name, i) => variables[name] === type(args[i]));
+    signature.every((name, index) => variables[name] === type(args[index]));
 }
 
 function findSignature(args, variables, signatures) {
@@ -26,7 +31,8 @@ export default function parseArgs(args, variables, ...signatures) {
   const signature = findSignature(args, variables, signatures);
   return signature ?
     signature.reduce(
-      (parsedArgs, name, i) => Object.assign(parsedArgs, {[name]: args[i]}),
+      (parsedArgs, name, index) =>
+        Object.assign(parsedArgs, {[name]: args[index]}),
       {}
     ) :
     {};

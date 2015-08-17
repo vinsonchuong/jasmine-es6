@@ -11,8 +11,8 @@ const implementation = {
   }
 };
 
-describe('Promise', function() {
-  it('works', async function() {
+describe('Promise', () => {
+  it('works', async () => {
     const promise = new TestPromise();
     spyOn(implementation, 'fetch').and.returnValue(promise);
     implementation.doStuff();

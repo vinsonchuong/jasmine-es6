@@ -1,9 +1,8 @@
-#!/usr/bin/env node
-var fs = require('fs');
+import fs from 'fs';
 
 require('babel/register')({stage: 0});
 
-fs.exists('spec/support/jasmine.json', function(configExists) {
+fs.exists('spec/support/jasmine.json', configExists => {
   if (!configExists) {
     process.env.JASMINE_CONFIG_PATH =
       process.env.JASMINE_CONFIG_PATH ||

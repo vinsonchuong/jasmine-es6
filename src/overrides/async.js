@@ -7,8 +7,8 @@ const fnNames = [
 ];
 
 function wrap(jasmineFn) {
-  return function(...args) {
-    let {title, callback, timeout} = parseArgs(
+  return function wrapped(...args) {
+    const {title, callback, timeout} = parseArgs(
       args,
       {title: String, callback: Function, timeout: Number},
       ['title', 'callback'],
@@ -17,19 +17,22 @@ function wrap(jasmineFn) {
       ['callback', 'timeout']
     );
 
+    let newCallback = callback;
+
     if (callback.toString().includes('regeneratorRuntime.async')) {
-      const oldCallback = callback;
-      callback = async function(done) {
+      newCallback = async function wrappedCallback(done) {
         try {
-          await oldCallback.call(this);
+          /* eslint-disable */
+          await Reflect.apply(callback, this);
+          /* eslint-enable */
           done();
-        } catch(e) {
-          done.fail(e);
+        } catch(error) {
+          done.fail(error);
         }
       };
     }
 
-    return jasmineFn(...[title, callback, timeout].filter(Boolean));
+    return jasmineFn(...[title, newCallback, timeout].filter(Boolean));
   };
 }
 
