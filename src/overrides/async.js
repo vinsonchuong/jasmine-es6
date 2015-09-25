@@ -26,7 +26,7 @@ function wrap(jasmineFn) {
           await Reflect.apply(callback, this);
           /* eslint-enable */
           done();
-        } catch(error) {
+        } catch (error) {
           done.fail(error);
         }
       };
