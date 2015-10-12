@@ -1,8 +1,8 @@
 import path from 'path';
-import {exec} from 'node-promise-es6/child-process';
+import {childProcess} from 'node-promise-es6';
 
 async function cli(fixture, env = null) {
-  const child = await exec(
+  const child = await childProcess.exec(
     'jasmine',
     {
       cwd: path.resolve(__dirname, `../../fixtures/${fixture}`),
