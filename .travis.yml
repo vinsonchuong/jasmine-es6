@@ -1,13 +1,8 @@
 ---
+sudo: required
+dist: trusty
 language: node_js
 node_js:
   - 4.2
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
 before_install:
-  - export CXX='g++-4.8'
   - npm install -g npm
