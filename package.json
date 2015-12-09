@@ -30,7 +30,7 @@
   "dependencies": {
     "babel": "^5.8.29",
     "es6-promise": "^3.0.2",
-    "jasmine": "^2.3.2"
+    "jasmine": "^2.4.1"
   },
   "devDependencies": {
     "dist-es6": "^0.0.19",
