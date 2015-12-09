@@ -3,6 +3,6 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - 5.0
+  - 5.1
 before_install:
   - npm install -g npm
