@@ -12,8 +12,8 @@ export default class extends ES6Promise {
   }
 
   resolve() {
-    const {resolve, finished} = privates.get(this);
-    resolve();
+    let {resolve: res, finished} = privates.get(this);
+    res();
     return finished;
   }
 
