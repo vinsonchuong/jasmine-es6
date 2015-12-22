@@ -12,7 +12,7 @@ export default class extends ES6Promise {
   }
 
   resolve() {
-    let {resolve: res, finished} = privates.get(this);
+    const {resolve: res, finished} = privates.get(this);
     res();
     return finished;
   }
