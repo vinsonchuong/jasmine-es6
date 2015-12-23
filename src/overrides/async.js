@@ -19,7 +19,7 @@ function wrap(jasmineFn) {
 
     let newCallback = callback;
 
-    if (callback.toString().includes('regeneratorRuntime.async')) {
+    if (callback.toString().includes('new _promise2.default')) {
       newCallback = async function wrappedCallback(done) {
         try {
           /* eslint-disable */

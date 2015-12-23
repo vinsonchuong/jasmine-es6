@@ -32,10 +32,13 @@ describe('jasmine-es6', () => {
     )).toContain('No specs found');
   });
 
-  it('installs the async override by default', async () => {
-    const output = await cli('async_override');
-    expect(output).toContain('2 specs, 0 failures');
-    const [, duration] = output.match(/Finished in ([\d.]+) seconds/);
-    expect(Number(duration)).toBeGreaterThan(5);
+  it('installs the async override by default', (done) => {
+    cli('async_override')
+      .then(output => {
+        expect(output).toContain('2 specs, 0 failures');
+        const [, duration] = output.match(/Finished in ([\d.]+) seconds/);
+        expect(Number(duration)).toBeGreaterThan(5);
+      })
+      .then(done, done.fail);
   }, 10000);
 });
