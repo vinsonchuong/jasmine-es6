@@ -28,15 +28,15 @@
     "test": "eslint && jasmine"
   },
   "dependencies": {
-    "babel": "^6.3.26",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-stage-0": "^6.3.13",
-    "babel-plugin-transform-runtime": "^6.4.3",
+    "babel": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-plugin-transform-runtime": "^6.5.0",
     "es6-promise": "^3.0.2",
     "jasmine": "^2.4.1"
   },
   "devDependencies": {
-    "dist-es6": "^0.1.5",
+    "dist-es6": "^0.1.9",
     "eslint-defaults": "^0.1.7",
     "node-promise-es6": "^0.3.1"
   }
