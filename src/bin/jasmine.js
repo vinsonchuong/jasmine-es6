@@ -2,7 +2,7 @@ import fs from 'fs';
 
 require('babel-core/register')({
   presets: ['es2015', 'stage-0'],
-  plugins: ['transform-runtime']
+  plugins: ['transform-decorators-legacy', 'transform-runtime']
 });
 
 fs.exists('spec/support/jasmine.json', configExists => {
