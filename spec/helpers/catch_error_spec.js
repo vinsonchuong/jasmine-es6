@@ -16,6 +16,6 @@ describe('catchError', () => {
   it('returns undefined for a successful async function', async () => {
     const value = 42;
     const promise = Promise.resolve(value);
-    expect(await catchError(promise)).toBeUndefined();
+    expect(await catchError(promise)).toBeNull();
   });
 });

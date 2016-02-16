@@ -43,7 +43,8 @@ describe('parseArgs', () => {
 
   it('can parse multiple types', () => {
     function fn() {}
-    const arr = [], obj = {};
+    const arr = [];
+    const obj = {};
     expect(
       parseArgs(
         [true, 1, 'foo', fn, arr, obj],

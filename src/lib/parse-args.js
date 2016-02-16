@@ -25,6 +25,7 @@ function findSignature(args, variables, signatures) {
       return signature;
     }
   }
+  return null;
 }
 
 export default function parseArgs(args, variables, ...signatures) {

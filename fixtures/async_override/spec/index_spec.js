@@ -1,6 +1,6 @@
 describe('dummy', () => {
   function promise(delay = 0) {
-    return new Promise(resolve => setTimeout(() => resolve('done'), delay));
+    return new Promise((resolve) => setTimeout(() => resolve('done'), delay));
   }
 
   it('works with async', async () => {

@@ -34,7 +34,7 @@ describe('jasmine-es6', () => {
 
   it('installs the async override by default', (done) => {
     cli('async_override')
-      .then(output => {
+      .then((output) => {
         expect(output).toContain('2 specs, 0 failures');
         const [, duration] = output.match(/Finished in ([\d.]+) seconds/);
         expect(Number(duration)).toBeGreaterThan(5);
