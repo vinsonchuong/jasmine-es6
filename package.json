@@ -1,6 +1,6 @@
 {
   "name": "jasmine-es6",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Helpers and overrides that augment Jasmine for use in an ES6+ environment",
   "keywords": [
     "jasmine",
