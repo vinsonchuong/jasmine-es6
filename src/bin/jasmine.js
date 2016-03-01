@@ -7,5 +7,5 @@ fs.exists('spec/support/jasmine.json', (configExists) => {
       process.env.JASMINE_CONFIG_PATH ||
       require.resolve('jasmine-es6/config/jasmine.json');
   }
-  run('jasmine/bin/jasmine');
+  run(require.resolve('jasmine/bin/jasmine'));
 });
