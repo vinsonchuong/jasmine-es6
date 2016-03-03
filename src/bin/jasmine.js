@@ -1,11 +1,10 @@
-import fs from 'fs';
 import run from 'dist-es6/lib/run';
+import {configPath} from 'jasmine-es6/lib/reflect';
 
-fs.exists('spec/support/jasmine.json', (configExists) => {
-  if (!configExists) {
-    process.env.JASMINE_CONFIG_PATH =
-      process.env.JASMINE_CONFIG_PATH ||
-      require.resolve('jasmine-es6/config/jasmine.json');
-  }
+async function main() {
+  process.env.JASMINE_CONFIG_PATH =
+    process.env.JASMINE_CONFIG_PATH ||
+    (await configPath());
   run(require.resolve('jasmine/bin/jasmine'));
-});
+}
+main();

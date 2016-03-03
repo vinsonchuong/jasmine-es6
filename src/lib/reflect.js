@@ -1,17 +1,26 @@
 import * as path from 'path';
 import * as fse from 'fs-extra-promise-es6';
 import glob from 'glob';
-import {promisify} from 'node-promise-es6';
+import {fs, promisify} from 'node-promise-es6';
+
+const defaultConfigPath = require.resolve('jasmine-es6/config/jasmine.json');
+const overrideConfigPath = path.resolve('spec/support/jasmine.json');
+
+export async function configPath() {
+  try {
+    await fs.readFile(overrideConfigPath);
+    return overrideConfigPath;
+  } catch (error) {
+    return defaultConfigPath;
+  }
+}
+
+export async function config() {
+  return await fse.readJson(await configPath());
+}
 
 export async function specFiles() {
-  let jasmineJson;
-  try {
-    jasmineJson = await fse.readJson('spec/support/jasmine.json');
-  } catch (error) {
-    jasmineJson = await fse.readJson(
-      require.resolve('jasmine-es6/config/jasmine.json'));
-  }
-
+  const jasmineJson = await config();
   const files = [];
   for (const fileGlob of jasmineJson.spec_files) {
     const globResults = await promisify(glob)(
