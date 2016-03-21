@@ -1,50 +1,25 @@
-import * as path from 'path';
-import {childProcess, fs} from 'node-promise-es6';
 import * as fse from 'fs-extra-promise-es6';
+import Directory from 'directory-helpers';
 
-class Project {
-  path(...args) {
-    return path.resolve('project', ...args);
-  }
-
-  async write(files) {
-    for (const filePath of Object.keys(files)) {
-      const absolutePath = this.path(filePath);
-      const fileContents = files[filePath];
-      await fse.ensureFile(absolutePath);
-      if (typeof fileContents === 'object') {
-        await fse.writeJson(absolutePath, fileContents);
-      } else {
-        await fs.writeFile(absolutePath, fileContents);
-      }
-    }
-  }
-
+class Project extends Directory {
   async run(code) {
     await this.write({
-      'run.js': "require('dist-es6/lib/run')(require('path').resolve('./code'))",
+      'run.js': "require('dist-es6/lib/run').module(require('path').resolve('./code'))",
       'code.js': code
     });
-
-    const {stdout: output} = await childProcess.exec(
-      'node run.js',
-      {
-        cwd: this.path()
-      }
-    );
-    return output.trim();
+    return await this.exec('node', ['run.js']);
   }
 }
 
 describe('reflect', () => {
   afterEach(async () => {
-    await fse.remove(path.resolve('project'));
+    await new Project('project').remove();
   });
 
   describe('#configPath', () => {
     it('returns the default config when the project does not provide a jasmine.json', async () => {
-      const project = new Project();
-      const result = await project.run(`
+      const project = new Project('project');
+      const result = await project.execJs(`
         import {configPath} from 'jasmine-es6/lib/reflect';
         async function run() {
           process.stdout.write(await configPath());
@@ -56,7 +31,7 @@ describe('reflect', () => {
     });
 
     it('returns the provided config when the project provides a jasmine.json', async () => {
-      const project = new Project();
+      const project = new Project('project');
       await project.write({
         'spec/support/jasmine.json': {
           spec_dir: 'spec',
@@ -77,7 +52,7 @@ describe('reflect', () => {
 
   describe('#config', () => {
     it('returns the default config when the project does not provide a jasmine.json', async () => {
-      const project = new Project();
+      const project = new Project('project');
       const result = await project.run(`
         import {config} from 'jasmine-es6/lib/reflect';
         async function run() {
@@ -90,7 +65,7 @@ describe('reflect', () => {
     });
 
     it('returns the provided config', async () => {
-      const project = new Project();
+      const project = new Project('project');
       await project.write({
         'spec/support/jasmine.json': {
           spec_dir: 'spec',
@@ -113,7 +88,7 @@ describe('reflect', () => {
 
   describe('#specFiles', () => {
     it('returns an array of spec files', async () => {
-      const project = new Project();
+      const project = new Project('project');
       await project.write({
         'spec/support/jasmine.json': {
           spec_dir: 'spec',
