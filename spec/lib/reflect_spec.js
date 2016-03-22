@@ -1,24 +1,15 @@
 import * as fse from 'fs-extra-promise-es6';
 import Directory from 'directory-helpers';
 
-class Project extends Directory {
-  async run(code) {
-    await this.write({
-      'run.js': "require('dist-es6/lib/run').module(require('path').resolve('./code'))",
-      'code.js': code
-    });
-    return await this.exec('node', ['run.js']);
-  }
-}
-
 describe('reflect', () => {
   afterEach(async () => {
-    await new Project('project').remove();
+    await new Directory('project').remove();
   });
 
   describe('#configPath', () => {
     it('returns the default config when the project does not provide a jasmine.json', async () => {
-      const project = new Project('project');
+      const project = new Directory('project');
+      await project.create();
       const result = await project.execJs(`
         import {configPath} from 'jasmine-es6/lib/reflect';
         async function run() {
@@ -31,14 +22,14 @@ describe('reflect', () => {
     });
 
     it('returns the provided config when the project provides a jasmine.json', async () => {
-      const project = new Project('project');
+      const project = new Directory('project');
       await project.write({
         'spec/support/jasmine.json': {
           spec_dir: 'spec',
           spec_files: ['**/*_spec.js']
         }
       });
-      const result = await project.run(`
+      const result = await project.execJs(`
         import {configPath} from 'jasmine-es6/lib/reflect';
         async function run() {
           process.stdout.write(await configPath());
@@ -52,8 +43,9 @@ describe('reflect', () => {
 
   describe('#config', () => {
     it('returns the default config when the project does not provide a jasmine.json', async () => {
-      const project = new Project('project');
-      const result = await project.run(`
+      const project = new Directory('project');
+      await project.create();
+      const result = await project.execJs(`
         import {config} from 'jasmine-es6/lib/reflect';
         async function run() {
           process.stdout.write(JSON.stringify(await config()));
@@ -65,14 +57,14 @@ describe('reflect', () => {
     });
 
     it('returns the provided config', async () => {
-      const project = new Project('project');
+      const project = new Directory('project');
       await project.write({
         'spec/support/jasmine.json': {
           spec_dir: 'spec',
           spec_files: ['**/*_spec.js']
         }
       });
-      const result = await project.run(`
+      const result = await project.execJs(`
         import {config} from 'jasmine-es6/lib/reflect';
         async function run() {
           process.stdout.write(JSON.stringify(await config()));
@@ -88,7 +80,7 @@ describe('reflect', () => {
 
   describe('#specFiles', () => {
     it('returns an array of spec files', async () => {
-      const project = new Project('project');
+      const project = new Directory('project');
       await project.write({
         'spec/support/jasmine.json': {
           spec_dir: 'spec',
@@ -97,7 +89,7 @@ describe('reflect', () => {
         'spec/index_spec.js': '',
         'spec/lib/foo_spec.js': ''
       });
-      const result = await project.run(`
+      const result = await project.execJs(`
         import {specFiles} from 'jasmine-es6/lib/reflect';
         async function run() {
           process.stdout.write(JSON.stringify(await specFiles()));
