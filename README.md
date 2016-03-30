@@ -109,7 +109,7 @@ const implementation = {
   fetch(url) { return new Promise((resolve, reject) => '') },
   async doStuff() {
     this.showSpinner = true;
-    await fetch('https://google.com');
+    await this.fetch('https://google.com');
     this.showSpinner = false;
   }
 }
