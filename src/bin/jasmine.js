@@ -7,4 +7,8 @@ async function main() {
     (await configPath());
   run.module(require.resolve('jasmine/bin/jasmine'));
 }
-main();
+main().catch((error) => {
+  setTimeout(() => {
+    throw error;
+  }, 0);
+});

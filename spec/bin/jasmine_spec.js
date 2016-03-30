@@ -47,4 +47,14 @@ describe('jasmine-es6', () => {
     expect(await catchError(cli('with_failures')))
       .toBe('Command failed: jasmine\n');
   });
+
+  it('returns status code 1 on runtime error during spec definition', async () => {
+    expect(await catchError(cli('with_runtime_error')))
+      .toMatch(/Cannot find module/);
+  });
+
+  it('returns status code 1 on syntax error', async () => {
+    expect(await catchError(cli('with_syntax_error')))
+      .toMatch(/SyntaxError/);
+  });
 });
