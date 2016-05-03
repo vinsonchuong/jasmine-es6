@@ -22,9 +22,9 @@ function wrap(jasmineFn) {
     if (callback.toString().includes('new _promise2.default')) {
       newCallback = async function wrappedCallback(done) {
         try {
-          /* eslint-disable */
-          await Reflect.apply(callback, this);
-          /* eslint-enable */
+          /* eslint-disable lines-around-comment, no-invalid-this */
+          await Reflect.apply(callback, this, []);
+          /* eslint-enable lines-around-comment, no-invalid-this */
           done();
         } catch (error) {
           done.fail(error);
