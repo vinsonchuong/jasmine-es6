@@ -4,7 +4,7 @@ import {catchError} from 'jasmine-es6';
 
 async function cli(fixture, env = null) {
   const child = await childProcess.exec(
-    'jasmine',
+    path.resolve(__dirname, '../../jasmine-bootstrap.js'),
     {
       cwd: path.resolve(__dirname, `../../fixtures/${fixture}`),
       env: Object.assign({}, process.env, env)
