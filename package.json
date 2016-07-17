@@ -37,6 +37,6 @@
   },
   "devDependencies": {
     "eslint-defaults": "^0.3.0",
-    "directory-helpers": "^0.0.9"
+    "directory-helpers": "^0.1.0"
   }
 }
