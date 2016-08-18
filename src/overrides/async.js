@@ -17,19 +17,15 @@ function wrap(jasmineFn) {
       ['callback', 'timeout']
     );
 
-    let newCallback = callback;
-
-    if (callback.toString().includes('new _promise2.default')) {
-      newCallback = async function wrappedCallback(done) {
-        try {
-          /* eslint-disable lines-around-comment, no-invalid-this */
-          await Reflect.apply(callback, this, []);
-          /* eslint-enable lines-around-comment, no-invalid-this */
-          done();
-        } catch (error) {
-          done.fail(error);
-        }
-      };
+    async function newCallback(done) {
+      try {
+        /* eslint-disable lines-around-comment, no-invalid-this */
+        await Reflect.apply(callback, this, [done]);
+        /* eslint-enable lines-around-comment, no-invalid-this */
+        done();
+      } catch (error) {
+        done.fail(error);
+      }
     }
 
     return jasmineFn(...[title, newCallback, timeout].filter(Boolean));
@@ -42,6 +38,7 @@ export default function install(env = global) {
     return;
   }
   installed = true;
+
   for (const fnName of fnNames) {
     env[fnName] = wrap(env[fnName]);
   }

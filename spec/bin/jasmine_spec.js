@@ -1,6 +1,8 @@
 import path from 'path';
 import {childProcess} from 'node-promise-es6';
-import {catchError} from 'jasmine-es6';
+import install, {catchError} from 'jasmine-es6';
+
+install();
 
 async function cli(fixture, env = null) {
   const child = await childProcess.exec(
@@ -45,7 +47,7 @@ describe('jasmine-es6', () => {
 
   it('returns status code 1 when specs fail', async () => {
     expect(await catchError(cli('with_failures')))
-      .toBe('Command failed: jasmine\n');
+      .toContain('Command failed');
   });
 
   it('returns status code 1 on runtime error during spec definition', async () => {
