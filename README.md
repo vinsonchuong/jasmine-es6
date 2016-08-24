@@ -69,6 +69,9 @@ describe('Async', function() {
 });
 ```
 
+Note that with this override installed, test cases will no longer be able to
+access the `done` argument.
+
 ### Helpers
 Functions and classes that enable more expressive and concise test cases.
 Either `require` helpers individually (as shown below) or all at once:

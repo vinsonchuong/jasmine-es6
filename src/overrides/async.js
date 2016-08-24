@@ -20,7 +20,7 @@ function wrap(jasmineFn) {
     async function newCallback(done) {
       try {
         /* eslint-disable lines-around-comment, no-invalid-this */
-        await Reflect.apply(callback, this, [done]);
+        await Reflect.apply(callback, this, []);
         /* eslint-enable lines-around-comment, no-invalid-this */
         done();
       } catch (error) {
