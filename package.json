@@ -30,7 +30,7 @@
   "dependencies": {
     "dist-es6": "^0.2.4",
     "es6-promise": "^3.2.1",
-    "jasmine": "^2.5.0",
+    "jasmine": "^2.5.1",
     "node-promise-es6": "^0.3.2"
   },
   "devDependencies": {
