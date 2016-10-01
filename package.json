@@ -28,13 +28,13 @@
     "test": "eslint --ignore-pattern fixtures && jasmine"
   },
   "dependencies": {
-    "dist-es6": "^0.2.4",
-    "es6-promise": "^3.2.1",
-    "jasmine": "2.4.1",
+    "dist-es6": "^0.2.5",
+    "es6-promise": "^4.0.3",
+    "jasmine": "^2.5.2",
     "node-promise-es6": "^0.3.2"
   },
   "devDependencies": {
-    "eslint-defaults": "^0.3.1",
-    "directory-helpers": "^0.1.3"
+    "eslint-defaults": "^0.3.2",
+    "directory-helpers": "^0.1.6"
   }
 }
