@@ -31,7 +31,8 @@
     "dist-es6": "^0.2.5",
     "es6-promise": "^4.0.3",
     "jasmine": "^2.5.2",
-    "node-promise-es6": "^0.3.2"
+    "node-promise-es6": "^0.3.2",
+    "esnext-async": "^0.0.9"
   },
   "devDependencies": {
     "eslint-defaults": "^0.3.2",
