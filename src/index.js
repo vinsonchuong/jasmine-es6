@@ -5,4 +5,3 @@ export default function install(env = global) {
 }
 
 export {default as catchError} from 'jasmine-es6/helpers/catch_error';
-export {default as Promise} from 'jasmine-es6/helpers/promise';

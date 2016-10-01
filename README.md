@@ -97,38 +97,6 @@ describe('Async', function() {
 });
 ```
 
-#### Promise
-An experimental  `Promise` subclass for injecting into the implementation
-under test. It provides `resolve` and `reject` methods for controlling the
-promise. `resolve` and `reject` also return a promise that is resolved when all
-listeners are finished executing.
-
-```js
-import TestPromise from 'jasmine-es6/helpers/promise';
-import install from 'jasmine-es6/overrides/async';
-install();
-
-const implementation = {
-  fetch(url) { return new Promise((resolve, reject) => '') },
-  async doStuff() {
-    this.showSpinner = true;
-    await this.fetch('https://google.com');
-    this.showSpinner = false;
-  }
-}
-
-describe('Promise', function() {
-  it('makes it easier to time assertions correctly', async function() {
-    const promise = new TestPromise();
-    spyOn(implementation, 'fetch').and.returnValue(promise);
-    implementation.doStuff();
-    expect(implementation.showSpinner).toBe(true);
-    await promise.resolve();
-    expect(implementation.showSpinner).toBe(false);
-  });
-});
-```
-
 ## Development
 ### Getting Started
 The application requires the following external dependencies:
