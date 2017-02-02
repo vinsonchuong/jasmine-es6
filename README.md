@@ -1,3 +1,6 @@
+**This package has been deprecated in favor of
+[AVA](https://github.com/avajs/ava)**
+
 # jasmine-es6
 [![Build Status](https://travis-ci.org/vinsonchuong/jasmine-es6.svg?branch=master)](https://travis-ci.org/vinsonchuong/jasmine-es6)
 
